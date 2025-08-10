@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sharktop5 Portfolio - Home</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0a1a2f;
+    color: white;
+    overflow: hidden; /* Prevent all scrolling */
+    position: relative;
+    z-index: 1;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180"><g fill="none" stroke="rgba(100,200,255,0.12)" stroke-width="1.2"><rect x="10" y="10" width="160" height="160" rx="15" ry="15"/><circle cx="90" cy="90" r="40"/><line x1="90" y1="50" x2="90" y2="130"/><line x1="50" y1="90" x2="130" y2="90"/><path d="M40,40 L60,60 L40,80 L60,100" /><path d="M140,40 L120,60 L140,80 L120,100" /><circle cx="90" cy="90" r="8" /><line x1="90" y1="90" x2="90" y2="130" stroke-dasharray="5,5"/><line x1="90" y1="90" x2="130" y2="90" stroke-dasharray="5,5"/><polyline points="20,160 40,140 60,160 80,140 100,160" /><text x="15" y="170" fill="rgba(100,200,255,0.1)" font-family="monospace" font-size="10">SHIP PLAN</text></g></svg>');
+    background-repeat: repeat;
+    background-position: 0 0;
+    z-index: 0;
+    opacity: 0.3;
+  }
+
+  /* Cover Hero Section */
+  .cover {
+    position: relative;
+    width: 100%;
+    height: 42vh; /* Fit all text comfortably */
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+  }
+  .bg-video {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  /* Container for heading + description */
+  .cover-text {
+    position: relative;
+    z-index: 1;
+    max-width: 90%;
+    background: rgba(0,0,0,0.6);
+    padding: 20px;
+    border-radius: 10px;
+  }
+  .cover-text h1 {
+    margin: 0 0 10px 0;
+    font-size: 3em;
+  }
+  .cover-description {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: 400;
+    color: #aad8ff;
+  }
+
+  /* Separator with text and line */
+  .separator {
+    width: 90%;
+    max-width: 900px;
+    margin: 20px auto 10px auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .separator-text {
+    font-weight: 700;
+    font-size: 1.2em;
+    color: #00aaff;
+    white-space: nowrap;
+  }
+  .separator-line {
+    flex-grow: 1;
+    height: 4px;
+    background: #00aaff;
+    border-radius: 3px;
+  }
+
+  /* Poster menu grid with subtle background */
+  .poster-menu {
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    background: linear-gradient(to bottom, rgba(10, 26, 47, 0), rgba(0, 162, 255, 0.1));
+    border-radius: 12px;
+    box-shadow: inset 0 0 15px rgba(0, 162, 255, 0.2);
+  }
+
+  .poster-link {
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.7);
+    transform-origin: center center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #102544;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: white;
+  }
+
+  .poster-link:hover,
+  .poster-link:focus {
+    transform: scale(1.07);
+    box-shadow: 0 0 25px rgba(0, 162, 255, 0.8);
+    outline: none;
+  }
+
+  .poster-link img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px 12px 0 0;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+  }
+
+  .poster-caption {
+    padding: 10px 15px;
+    font-weight: 600;
+    font-size: 1.1em;
+    text-align: center;
+    background: #14315a;
+    border-radius: 0 0 12px 12px;
+  }
+
+  /* Scroll reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+</style>
+</head>
+<body>
+
+<!-- Cover with looping background video -->
+<section class="cover">
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="your-video.mp4" type="video/mp4" />
+  </video>
+  <div class="cover-text">
+    <h1>Sharktop5 – Roblox Texture Artist</h1>
+    <p class="cover-description">Creating immersive naval and military textures with attention to detail and realism.</p>
+  </div>
+</section>
+
+<!-- Separator with text and line -->
+<section class="separator" aria-label="Featured projects separator">
+  <div class="separator-text">FEATURED PROJECTS</div>
+  <div class="separator-line"></div>
+</section>
+
+<!-- Posters menu -->
+<section class="poster-menu" aria-label="Projects menu">
+  <a href="Type23.html" class="poster-link reveal" tabindex="0" aria-label="View Type 23 project">
+    <img src="Type 23-poster.jpg" alt="Type 23 poster" />
+    <div class="poster-caption">Type 23 – Realistic Naval Frigate</div>
+  </a>
+  <a href="ArleighBurke.html" class="poster-link reveal" tabindex="0" aria-label="View Arleigh Burke project">
+    <img src="Type 23-poster.jpg" alt="Arleigh Burke fallback poster" />
+    <div class="poster-caption">Arleigh Burke – Advanced Destroyer</div>
+  </a>
+  <a href="Type26.html" class="poster-link reveal" tabindex="0" aria-label="View Type 26 project">
+    <img src="Type 23-poster.jpg" alt="Type 26 fallback poster" />
+    <div class="poster-caption">Type 26 – Next-Gen Naval Frigate</div>
+  </a>
+</section>
+
+<script>
+  // Scroll reveal effect for poster links
+  function revealOnScroll() {
+    const reveals = document.querySelectorAll('.reveal');
+    const windowHeight = window.innerHeight;
+    reveals.forEach(el => {
+      const top = el.getBoundingClientRect().top;
+      if (top < windowHeight - 100) {
+        el.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+</script>
+
+</body>
+</html>

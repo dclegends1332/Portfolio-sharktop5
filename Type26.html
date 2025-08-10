@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sharktop5 Portfolio - Type 26</title>
+<style>
+  body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0a1a2f;
+      color: white;
+      overflow-x: hidden;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 40px 40px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+  }
+  body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180"><g fill="none" stroke="rgba(100,200,255,0.12)" stroke-width="1.2"><rect x="10" y="10" width="160" height="160" rx="15" ry="15"/><circle cx="90" cy="90" r="40"/><line x1="90" y1="50" x2="90" y2="130"/><line x1="50" y1="90" x2="130" y2="90"/><path d="M40,40 L60,60 L40,80 L60,100" /><path d="M140,40 L120,60 L140,80 L120,100" /><circle cx="90" cy="90" r="8" /><line x1="90" y1="90" x2="90" y2="130" stroke-dasharray="5,5"/><line x1="90" y1="90" x2="130" y2="90" stroke-dasharray="5,5"/><polyline points="20,160 40,140 60,160 80,140 100,160" /><text x="15" y="170" fill="rgba(100,200,255,0.1)" font-family="monospace" font-size="10">SHIP PLAN</text></g></svg>');
+      background-repeat: repeat;
+      background-position: 0 0;
+      z-index: 0;
+      opacity: 0.3;
+  }
+
+  .home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: transparent;
+    border: 2px solid #64b4ff;
+    color: #64b4ff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1rem;
+    z-index: 1000;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+  }
+  .home-button:hover,
+  .home-button:focus {
+    background-color: #64b4ff;
+    color: #0a1a2f;
+    box-shadow: 0 0 10px #64b4ff;
+    outline: none;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    z-index: 1;
+    position: relative;
+  }
+
+  .posters-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+    overflow: visible;
+  }
+
+  .poster-thumb {
+    flex: 0 0 auto;
+    width: 150px;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+  }
+  .poster-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(100, 180, 255, 0.8);
+  }
+  .poster-thumb.selected {
+    border-color: #64b4ff;
+    box-shadow: 0 0 30px rgba(100, 180, 255, 1);
+  }
+  .poster-thumb img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .showcase {
+    background: rgba(16, 37, 68, 0.85);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.8);
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .showcase h2 {
+    margin: 0 0 10px;
+    font-size: 2em;
+    text-align: center;
+  }
+  .showcase p {
+    font-size: 1.1em;
+    max-width: 900px;
+    margin: 0 0 20px;
+    text-align: center;
+  }
+
+  video.showcase-video {
+    width: 100%;
+    max-width: 900px;
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.7);
+    background: black;
+  }
+
+  @media (max-width: 700px) {
+    .poster-thumb {
+      width: 120px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<a href="Homepage.html" class="home-button" aria-label="Homepage">Homepage</a>
+
+<div class="container">
+
+  <section class="showcase" aria-live="polite" aria-atomic="true">
+    <h2 id="project-title">Type 26 – Next-Gen Naval Frigate</h2>
+    <p id="project-description">
+      An advanced texturing project featuring the Type 26 Frigate with emphasis on futuristic materials and lighting effects.
+    </p>
+    <video id="project-video" class="showcase-video" autoplay muted loop playsinline>
+      <source src="Type 26.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <button id="fullscreen-btn" aria-label="Toggle fullscreen video" style="margin-top: 10px; padding: 8px 14px; border-radius: 6px; border: none; background: #64b4ff; color: #0a1a2f; font-weight: bold; cursor: pointer;">
+      Fullscreen
+    </button>
+  </section>
+
+  <div class="posters-menu" role="tablist" aria-label="Project selection">
+    <div class="poster-thumb" role="tab" tabindex="-1" aria-selected="false" data-index="0">
+      <img src="Type 23-poster.jpg" alt="Type 23 Poster" />
+    </div>
+    <div class="poster-thumb" role="tab" tabindex="-1" aria-selected="false" data-index="1">
+      <img src="Type 23-poster.jpg" alt="Arleigh Burke Poster" />
+    </div>
+    <div class="poster-thumb selected" role="tab" tabindex="0" aria-selected="true" data-index="2">
+      <img src="Type 23-poster.jpg" alt="Type 26 Poster" />
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const projects = [
+    {
+      title: "Type 23 – Realistic Naval Asset",
+      description: "This high-fidelity Type 23 Frigate was created with a focus on realistic naval texturing, replicating wear, weathering, and material variation.",
+      videoSrc: "Type 23.mp4",
+      posterAlt: "Type 23 Poster",
+      posterSrc: "Type 23-poster.jpg"
+    },
+    {
+      title: "Arleigh Burke – Advanced Destroyer Textures",
+      description: "Detailed texturing work showcasing complex metal surfaces and realistic weathering effects on the Arleigh Burke-class destroyer.",
+      videoSrc: "Arleigh Burke.mp4",
+      posterAlt: "Arleigh Burke Poster",
+      posterSrc: "Type 23-poster.jpg"
+    },
+    {
+      title: "Type 26 – Next-Gen Naval Frigate",
+      description: "An advanced texturing project featuring the Type 26 Frigate with emphasis on futuristic materials and lighting effects.",
+      videoSrc: "my-frigate-video.mp4",
+      posterAlt: "Type 26 Poster",
+      posterSrc: "Type 23-poster.jpg"
+    }
+  ];
+
+  const projectTitle = document.getElementById('project-title');
+  const projectDescription = document.getElementById('project-description');
+  const projectVideo = document.getElementById('project-video');
+  const posters = document.querySelectorAll('.poster-thumb');
+
+  function updateProject(index) {
+    const project = projects[index];
+    projectTitle.textContent = project.title;
+    projectDescription.textContent = project.description;
+
+    projectVideo.pause();
+    projectVideo.setAttribute('src', project.videoSrc);
+    projectVideo.load();
+    projectVideo.play();
+
+    posters.forEach((poster, i) => {
+      if (i === index) {
+        poster.classList.add('selected');
+        poster.setAttribute('aria-selected', 'true');
+        poster.setAttribute('tabindex', '0');
+      } else {
+        poster.classList.remove('selected');
+        poster.setAttribute('aria-selected', 'false');
+        poster.setAttribute('tabindex', '-1');
+      }
+    });
+  }
+
+  posters.forEach((poster) => {
+    poster.addEventListener('click', () => {
+      const index = parseInt(poster.getAttribute('data-index'), 10);
+      updateProject(index);
+    });
+    poster.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const index = parseInt(poster.getAttribute('data-index'), 10);
+        updateProject(index);
+      }
+    });
+  });
+
+  // Initialize selected project
+  updateProject(2);
+
+  // Fullscreen toggle for video
+  const fullscreenBtn = document.getElementById('fullscreen-btn');
+  fullscreenBtn.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+      projectVideo.requestFullscreen().catch(err => {
+        alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  });
+</script>
+
+</body>
+</html>
