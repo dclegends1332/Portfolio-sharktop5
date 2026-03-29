@@ -1,215 +1,681 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sharktop5 Portfolio - Home</title>
-<style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #0a1a2f;
-    color: white;
-    overflow: hidden; /* Prevent all scrolling */
-    position: relative;
-    z-index: 1;
-    background-image:
-      linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-    background-size: 40px 40px;
-  }
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    pointer-events: none;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180"><g fill="none" stroke="rgba(100,200,255,0.12)" stroke-width="1.2"><rect x="10" y="10" width="160" height="160" rx="15" ry="15"/><circle cx="90" cy="90" r="40"/><line x1="90" y1="50" x2="90" y2="130"/><line x1="50" y1="90" x2="130" y2="90"/><path d="M40,40 L60,60 L40,80 L60,100" /><path d="M140,40 L120,60 L140,80 L120,100" /><circle cx="90" cy="90" r="8" /><line x1="90" y1="90" x2="90" y2="130" stroke-dasharray="5,5"/><line x1="90" y1="90" x2="130" y2="90" stroke-dasharray="5,5"/><polyline points="20,160 40,140 60,160 80,140 100,160" /><text x="15" y="170" fill="rgba(100,200,255,0.1)" font-family="monospace" font-size="10">SHIP PLAN</text></g></svg>');
-    background-repeat: repeat;
-    background-position: 0 0;
-    z-index: 0;
-    opacity: 0.3;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sharktop5 – Roblox Texture Artist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:    #0a0f1a;
+      --deep:    #060b12;
+      --steel:   #1c2a3a;
+      --ocean:   #0d3b5e;
+      --cyan:    #00c8ff;
+      --gold:    #c8a84b;
+      --text:    #d4dde8;
+      --muted:   #5a7a99;
+      --white:   #ffffff;
+    }
 
-  /* Cover Hero Section */
-  .cover {
-    position: relative;
-    width: 100%;
-    height: 42vh; /* Fit all text comfortably */
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-    border-radius: 0;
-    box-shadow: none;
-    background-color: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-  }
-  .bg-video {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    z-index: -1;
-  }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* Container for heading + description */
-  .cover-text {
-    position: relative;
-    z-index: 1;
-    max-width: 90%;
-    background: rgba(0,0,0,0.6);
-    padding: 20px;
-    border-radius: 10px;
-  }
-  .cover-text h1 {
-    margin: 0 0 10px 0;
-    font-size: 3em;
-  }
-  .cover-description {
-    margin: 0;
-    font-size: 1.2em;
-    font-weight: 400;
-    color: #aad8ff;
-  }
+    html { scroll-behavior: smooth; }
 
-  /* Separator with text and line */
-  .separator {
-    width: 90%;
-    max-width: 900px;
-    margin: 20px auto 10px auto;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  .separator-text {
-    font-weight: 700;
-    font-size: 1.2em;
-    color: #00aaff;
-    white-space: nowrap;
-  }
-  .separator-line {
-    flex-grow: 1;
-    height: 4px;
-    background: #00aaff;
-    border-radius: 3px;
-  }
+    body {
+      background: var(--deep);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
 
-  /* Poster menu grid with subtle background */
-  .poster-menu {
-    max-width: 900px;
-    margin: 0 auto 40px auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 30px;
-    padding: 20px;
-    background: linear-gradient(to bottom, rgba(10, 26, 47, 0), rgba(0, 162, 255, 0.1));
-    border-radius: 12px;
-    box-shadow: inset 0 0 15px rgba(0, 162, 255, 0.2);
-  }
+    /* ─── NOISE TEXTURE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.4;
+    }
 
-  .poster-link {
-    cursor: pointer;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.7);
-    transform-origin: center center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: #102544;
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    color: white;
-  }
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(6,11,18,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,200,255,0.08);
+    }
 
-  .poster-link:hover,
-  .poster-link:focus {
-    transform: scale(1.07);
-    box-shadow: 0 0 25px rgba(0, 162, 255, 0.8);
-    outline: none;
-  }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.15em;
+      color: var(--cyan);
+    }
 
-  .poster-link img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 12px 12px 0 0;
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
-  }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
 
-  .poster-caption {
-    padding: 10px 15px;
-    font-weight: 600;
-    font-size: 1.1em;
-    text-align: center;
-    background: #14315a;
-    border-radius: 0 0 12px 12px;
-  }
+    .nav-links a {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
 
-  /* Scroll reveal animation */
-  .reveal {
-    opacity: 0;
-    transform: scale(0.9);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: scale(1);
-  }
-</style>
+    .nav-links a:hover { color: var(--cyan); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 7rem 3rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Radar circle background */
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -10vw;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 70vw;
+      height: 70vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,200,255,0.04) 0%, transparent 65%);
+      border: 1px solid rgba(0,200,255,0.06);
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--cyan);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.2s forwards;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 10vw, 9rem);
+      line-height: 0.95;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      max-width: 18ch;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.4s forwards;
+    }
+
+    .hero h1 span {
+      color: var(--cyan);
+    }
+
+    .hero-sub {
+      margin-top: 2rem;
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 50ch;
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.6s forwards;
+    }
+
+    .hero-cta {
+      margin-top: 3rem;
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.8s forwards;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      background: var(--cyan);
+      color: var(--deep);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 600;
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: #33d4ff;
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .btn-ghost:hover { color: var(--white); }
+    .btn-ghost::after { content: '→'; }
+
+    /* ─── STATS BAR ─── */
+    .stats {
+      display: flex;
+      gap: 0;
+      border-top: 1px solid rgba(0,200,255,0.1);
+      border-bottom: 1px solid rgba(0,200,255,0.1);
+      margin: 0 3rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 1s forwards;
+    }
+
+    .stat {
+      flex: 1;
+      padding: 1.8rem 2rem;
+      border-right: 1px solid rgba(0,200,255,0.08);
+    }
+    .stat:last-child { border-right: none; }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--cyan);
+      letter-spacing: 0.05em;
+    }
+
+    .stat-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    /* ─── SECTION LABEL ─── */
+    .section-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-label::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 60px;
+      background: var(--cyan);
+      opacity: 0.4;
+    }
+
+    /* ─── PROJECTS ─── */
+    .projects {
+      padding: 6rem 3rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      background: var(--steel);
+      border: 1px solid rgba(0,200,255,0.08);
+      clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+      transition: transform 0.3s, border-color 0.3s;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0,200,255,0.35);
+    }
+
+    .card-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.7) brightness(0.85);
+      transition: filter 0.3s;
+    }
+
+    .card:hover .card-img {
+      filter: saturate(1) brightness(1);
+    }
+
+    .card-body {
+      padding: 1.5rem;
+    }
+
+    .card-tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.6rem;
+      opacity: 0.7;
+    }
+
+    .card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      line-height: 1.1;
+    }
+
+    .card-desc {
+      margin-top: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .card-arrow {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      color: var(--cyan);
+      font-size: 1.2rem;
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .card:hover .card-arrow { opacity: 1; transform: translateX(0); }
+
+    /* ─── ABOUT ─── */
+    .about {
+      padding: 6rem 3rem;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--deep) 100%);
+      border-top: 1px solid rgba(0,200,255,0.07);
+      border-bottom: 1px solid rgba(0,200,255,0.07);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .skill-item {
+      padding: 1.2rem;
+      background: rgba(0,200,255,0.04);
+      border: 1px solid rgba(0,200,255,0.1);
+      border-left: 3px solid var(--cyan);
+    }
+
+    .skill-name {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .skill-bar-bg {
+      height: 3px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--cyan), #0078a0);
+      border-radius: 2px;
+      transition: width 1.5s ease;
+    }
+
+    /* ─── CONTACT ─── */
+    .contact {
+      padding: 6rem 3rem;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .contact p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 45ch;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 2rem;
+      border: 1px solid rgba(0,200,255,0.25);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+    }
+
+    .contact-link:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      background: rgba(0,200,255,0.05);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 2rem 3rem;
+      border-top: 1px solid rgba(0,200,255,0.07);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-copy {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: rgba(90,122,153,0.5);
+    }
+
+    /* ─── SCAN LINE ─── */
+    .scanline {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+      opacity: 0.15;
+      animation: scan 4s linear infinite;
+      pointer-events: none;
+      z-index: 998;
+    }
+
+    @keyframes scan {
+      0%   { top: 0; }
+      100% { top: 100vh; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      .hero, .projects, .contact { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .stats { margin: 0 1.5rem; flex-wrap: wrap; }
+      .stat { min-width: 50%; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .about { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+      footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- Cover with looping background video -->
-<section class="cover">
-  <video autoplay muted loop playsinline class="bg-video">
-    <source src="your-video.mp4" type="video/mp4" />
-  </video>
-  <div class="cover-text">
-    <h1>Sharktop5 – Roblox Texture Artist</h1>
-    <p class="cover-description">Creating immersive naval and military textures with attention to detail and realism.</p>
+  <div class="scanline"></div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">SHARKTOP5</div>
+    <ul class="nav-links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">// Roblox · Naval & Military · Texture Artist</div>
+    <h1>Precision<br><span>Textures</span><br>Built for War</h1>
+    <p class="hero-sub">
+      Creating immersive, hyper-realistic naval and military textures for Roblox.
+      From frigates to destroyers — every rivet, weld, and weather stain placed with intent.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-ghost">Commission Work</a>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Vessels Textured</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Custom Work</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">HD</div>
+      <div class="stat-label">All Resolutions</div>
+    </div>
   </div>
-</section>
 
-<!-- Separator with text and line -->
-<section class="separator" aria-label="Featured projects separator">
-  <div class="separator-text">FEATURED PROJECTS</div>
-  <div class="separator-line"></div>
-</section>
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <div class="section-label">Featured Projects</div>
+    <div class="projects-grid">
 
-<!-- Posters menu -->
-<section class="poster-menu" aria-label="Projects menu">
-  <a href="Type23.html" class="poster-link reveal" tabindex="0" aria-label="View Type 23 project">
-    <img src="Type 23-poster.jpg" alt="Type 23 poster" />
-    <div class="poster-caption">Type 23 – Realistic Naval Frigate</div>
-  </a>
-  <a href="ArleighBurke.html" class="poster-link reveal" tabindex="0" aria-label="View Arleigh Burke project">
-    <img src="Type 23-poster.jpg" alt="Arleigh Burke fallback poster" />
-    <div class="poster-caption">Arleigh Burke – Advanced Destroyer</div>
-  </a>
-  <a href="Type26.html" class="poster-link reveal" tabindex="0" aria-label="View Type 26 project">
-    <img src="Type 23-poster.jpg" alt="Type 26 fallback poster" />
-    <div class="poster-caption">Type 26 – Next-Gen Naval Frigate</div>
-  </a>
-</section>
+      <a href="Type23.html" class="card">
+        <img class="card-img" src="Type 23-poster.jpg" alt="Type 23 Frigate" onerror="this.style.background='#1c2a3a';this.style.aspectRatio='16/10';this.removeAttribute('src')">
+        <div class="card-body">
+          <div class="card-tag">Royal Navy · Frigate</div>
+          <div class="card-title">Type 23</div>
+          <div class="card-desc">Realistic naval frigate textures capturing the grey-blue hull tones, weathered steel, and deck markings of the Duke-class.</div>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
 
-<script>
-  // Scroll reveal effect for poster links
-  function revealOnScroll() {
-    const reveals = document.querySelectorAll('.reveal');
-    const windowHeight = window.innerHeight;
-    reveals.forEach(el => {
-      const top = el.getBoundingClientRect().top;
-      if (top < windowHeight - 100) {
-        el.classList.add('visible');
-      }
+      <a href="ArleighBurke.html" class="card">
+        <img class="card-img" src="Type 23-poster.jpg" alt="Arleigh Burke" onerror="this.style.background='#1c2a3a';this.style.aspectRatio='16/10';this.removeAttribute('src')">
+        <div class="card-body">
+          <div class="card-tag">US Navy · Destroyer</div>
+          <div class="card-title">Arleigh Burke</div>
+          <div class="card-desc">Advanced guided-missile destroyer featuring detailed hull plating, haze grey tones, and authentic hull number markings.</div>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+
+      <a href="Type26.html" class="card">
+        <img class="card-img" src="Type 23-poster.jpg" alt="Type 26 Frigate" onerror="this.style.background='#1c2a3a';this.style.aspectRatio='16/10';this.removeAttribute('src')">
+        <div class="card-body">
+          <div class="card-tag">Royal Navy · Frigate</div>
+          <div class="card-title">Type 26</div>
+          <div class="card-desc">Next-generation City-class frigate with clean modern hull lines, stealth-conscious panelling, and precision surface detail.</div>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-text">
+      <div class="section-label">About</div>
+      <h2>Obsessed with<br>Naval Detail</h2>
+      <p>
+        I'm Sharktop5 — a Roblox texture artist specialising in naval and military assets.
+        I study real-world warships: hull configurations, paint schemes, stencil markings,
+        and corrosion patterns, then translate that research into game-ready textures.
+      </p>
+      <p>
+        Every texture pack is built from scratch. No stock assets, no shortcuts —
+        just meticulous reference work and a deep respect for the subject matter.
+      </p>
+      <a href="#contact" class="btn-ghost" style="margin-top:1rem;">Work with me</a>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-item">
+        <div class="skill-name">Naval Texturing</div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:95%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Military Detail</div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">UV Mapping</div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Weathering FX</div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:88%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Roblox Studio</div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:92%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Photoshop / GIMP</div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-label" style="justify-content:center;">Contact</div>
+    <h2>Ready to Commission?</h2>
+    <p>
+      Looking for custom naval or military textures for your Roblox project?
+      Let's talk specifications, timelines, and bring your ship to life.
+    </p>
+    <div class="contact-links">
+      <a href="https://www.roblox.com/users/sharktop5" class="contact-link">
+        🎮 Roblox Profile
+      </a>
+      <a href="https://discord.com/" class="contact-link">
+        💬 Discord
+      </a>
+      <a href="mailto:your@email.com" class="contact-link">
+        ✉ Email
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">SHARKTOP5 PORTFOLIO</div>
+    <div class="footer-copy">© 2025 · Roblox Texture Artist · All rights reserved</div>
+  </footer>
+
+  <script>
+    // Animate skill bars on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+            bar.style.width = bar.style.width; // trigger reflow
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.skills-grid').forEach(el => observer.observe(el));
+
+    // Subtle parallax on hero title
+    window.addEventListener('scroll', () => {
+      const hero = document.querySelector('.hero');
+      if (!hero) return;
+      const y = window.scrollY;
+      hero.style.transform = `translateY(${y * 0.12}px)`;
     });
-  }
-  window.addEventListener('scroll', revealOnScroll);
-  window.addEventListener('load', revealOnScroll);
-</script>
-
+  </script>
 </body>
 </html>
