@@ -1,275 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sharktop5 Portfolio</title>
-<style>
-  body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0a1a2f;
-      color: white;
-      overflow-x: hidden;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-      background-size: 40px 40px;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-  }
-  body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      pointer-events: none;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180"><g fill="none" stroke="rgba(100,200,255,0.12)" stroke-width="1.2"><rect x="10" y="10" width="160" height="160" rx="15" ry="15"/><circle cx="90" cy="90" r="40"/><line x1="90" y1="50" x2="90" y2="130"/><line x1="50" y1="90" x2="130" y2="90"/><path d="M40,40 L60,60 L40,80 L60,100" /><path d="M140,40 L120,60 L140,80 L120,100" /><circle cx="90" cy="90" r="8" /><line x1="90" y1="90" x2="90" y2="130" stroke-dasharray="5,5"/><line x1="90" y1="90" x2="130" y2="90" stroke-dasharray="5,5"/><polyline points="20,160 40,140 60,160 80,140 100,160" /><text x="15" y="170" fill="rgba(100,200,255,0.1)" font-family="monospace" font-size="10">SHIP PLAN</text></g></svg>');
-      background-repeat: repeat;
-      background-position: 0 0;
-      z-index: 0;
-      opacity: 0.3;
-  }
-
-  /* Homepage button */
-  .home-button {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background: transparent;
-    border: 2px solid #64b4ff;
-    color: #64b4ff;
-    padding: 8px 14px;
-    border-radius: 8px;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 1rem;
-    z-index: 1000;
-    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-    user-select: none;
-  }
-  .home-button:hover,
-  .home-button:focus {
-    background-color: #64b4ff;
-    color: #0a1a2f;
-    box-shadow: 0 0 10px #64b4ff;
-    outline: none;
-  }
-
-  .container {
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 0 20px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    z-index: 1;
-    position: relative;
-  }
-
-  /* Posters menu with flex-wrap and no horizontal scroll */
-  .posters-menu {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    padding-bottom: 10px;
-    border-bottom: 2px solid rgba(255,255,255,0.2);
-    overflow: visible;
-  }
-
-  .poster-thumb {
-    flex: 0 0 auto;
-    width: 150px;
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(0,0,0,0.6);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 2px solid transparent;
-  }
-  .poster-thumb:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 25px rgba(100, 180, 255, 0.8);
-  }
-  .poster-thumb.selected {
-    border-color: #64b4ff;
-    box-shadow: 0 0 30px rgba(100, 180, 255, 1);
-  }
-  .poster-thumb img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-
-  .showcase {
-    background: rgba(16, 37, 68, 0.85);
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.8);
-    padding: 20px;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 100%;
-  }
-
-  .showcase h2 {
-    margin: 0 0 10px;
-    font-size: 2em;
-    text-align: center;
-  }
-  .showcase p {
-    font-size: 1.1em;
-    max-width: 900px;
-    margin: 0 0 20px;
-    text-align: center;
-  }
-
-  video.showcase-video {
-    width: 100%;
-    max-width: 900px;
-    border-radius: 10px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.7);
-    background: black;
-  }
-
-  @media (max-width: 700px) {
-    .poster-thumb {
-      width: 120px;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arleigh Burke – Sharktop5</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:  #0a0f1a;
+      --deep:  #060b12;
+      --steel: #1c2a3a;
+      --cyan:  #00c8ff;
+      --text:  #d4dde8;
+      --muted: #5a7a99;
+      --white: #ffffff;
     }
-  }
-</style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--deep); color: var(--text);
+      font-family: 'Barlow', sans-serif; font-weight: 300; overflow-x: hidden;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 999; opacity: 0.4;
+    }
+    .scanline {
+      position: fixed; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+      opacity: 0.15; animation: scan 4s linear infinite; pointer-events: none; z-index: 998;
+    }
+    @keyframes scan { 0% { top: 0; } 100% { top: 100vh; } }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(6,11,18,0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,200,255,0.08);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem; letter-spacing: 0.15em; color: var(--cyan); text-decoration: none;
+    }
+    .nav-back {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--cyan); }
+    .hero {
+      min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 9rem 3rem 4rem; position: relative; overflow: hidden;
+      border-bottom: 1px solid rgba(0,200,255,0.08);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(0,200,255,0.04) 0%, transparent 60%),
+                  linear-gradient(to bottom, transparent 40%, var(--deep) 100%);
+    }
+    .hero-tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 0.3em; color: var(--cyan);
+      text-transform: uppercase; margin-bottom: 1rem;
+      opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 8vw, 7rem); line-height: 0.95; color: var(--white);
+      opacity: 0; animation: fadeUp 0.6s 0.35s forwards;
+    }
+    .hero h1 span { color: var(--cyan); }
+    .hero-desc {
+      max-width: 60ch; font-size: 0.95rem; color: var(--muted); line-height: 1.7; margin-top: 1.2rem;
+      opacity: 0; animation: fadeUp 0.6s 0.5s forwards;
+    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .specs-bar {
+      display: flex; border-bottom: 1px solid rgba(0,200,255,0.08);
+      opacity: 0; animation: fadeUp 0.6s 0.65s forwards;
+    }
+    .spec { flex: 1; padding: 1.5rem 3rem; border-right: 1px solid rgba(0,200,255,0.08); }
+    .spec:last-child { border-right: none; }
+    .spec-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 0.3rem;
+    }
+    .spec-value { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.05em; color: var(--white); }
+    .content { padding: 5rem 3rem; max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--cyan);
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;
+    }
+    .section-label::after { content: ''; display: block; height: 1px; width: 60px; background: var(--cyan); opacity: 0.4; }
+    .video-wrap {
+      position: relative; width: 100%; aspect-ratio: 16/9;
+      background: var(--steel); border: 1px solid rgba(0,200,255,0.12);
+      clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+      overflow: hidden; margin-bottom: 5rem;
+    }
+    .video-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .video-poster {
+      position: absolute; inset: 0; background: var(--steel);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 1rem; cursor: pointer;
+    }
+    .play-btn {
+      width: 72px; height: 72px; border-radius: 50%;
+      border: 2px solid var(--cyan);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cyan); font-size: 1.5rem; transition: background 0.2s, transform 0.2s;
+    }
+    .video-poster:hover .play-btn { background: rgba(0,200,255,0.1); transform: scale(1.08); }
+    .play-label { font-family: 'Share Tech Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 5rem; }
+    .gallery img {
+      width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block;
+      filter: saturate(0.7) brightness(0.85);
+      border: 1px solid rgba(0,200,255,0.08);
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+      transition: filter 0.3s;
+    }
+    .gallery img:hover { filter: saturate(1) brightness(1); }
+    .ships-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+    .ship-card {
+      display: block; text-decoration: none; position: relative; overflow: hidden;
+      background: var(--steel); border: 1px solid rgba(0,200,255,0.08);
+      clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .ship-card:hover { transform: translateY(-4px); border-color: rgba(0,200,255,0.35); }
+    .ship-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; filter: saturate(0.5) brightness(0.7); transition: filter 0.3s; }
+    .ship-card:hover img { filter: saturate(0.9) brightness(0.9); }
+    .ship-card-body { padding: 1.2rem; }
+    .ship-card-tag { font-family: 'Share Tech Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cyan); opacity: 0.7; margin-bottom: 0.3rem; }
+    .ship-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--white); }
+    footer { margin-top: 5rem; padding: 2rem 3rem; border-top: 1px solid rgba(0,200,255,0.07); display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--muted); letter-spacing: 0.1em; }
+    .footer-copy { font-family: 'Share Tech Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; color: rgba(90,122,153,0.5); }
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .hero, .content { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .specs-bar { flex-wrap: wrap; }
+      .spec { min-width: 50%; padding: 1.2rem 1.5rem; }
+      .ships-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 0.5rem; padding: 1.5rem; }
+    }
+  </style>
 </head>
 <body>
-
-<a href="Homepage.html" class="home-button" aria-label="Homepage">Homepage</a>
-
-<div class="container">
-
-  <section class="showcase" aria-live="polite" aria-atomic="true">
-    <h2 id="project-title">Arleigh Burke – Advanced Destroyer Textures</h2>
-    <p id="project-description">
-      Detailed texturing work showcasing complex metal surfaces and realistic weathering effects on the Arleigh Burke-class destroyer.
-    </p>
-    <video id="project-video" class="showcase-video" autoplay muted loop playsinline>
-      <source src="Arleigh Burke.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
+<div class="scanline"></div>
+<nav>
+  <a href="Homepage.html" class="nav-logo">SHARKTOP5</a>
+  <a href="Homepage.html" class="nav-back">← Back to Portfolio</a>
+</nav>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-tag">// United States Navy · Arleigh Burke Class · Destroyer</div>
+  <h1>Arleigh <span>Burke</span></h1>
+  <p class="hero-desc">
+    Advanced guided-missile destroyer featuring detailed hull plating, authentic haze grey tones,
+    hull number markings, and weathered surface detail across the entire vessel.
+  </p>
+</section>
+<div class="specs-bar">
+  <div class="spec"><div class="spec-label">Class</div><div class="spec-value">Arleigh Burke</div></div>
+  <div class="spec"><div class="spec-label">Navy</div><div class="spec-value">US Navy</div></div>
+  <div class="spec"><div class="spec-label">Type</div><div class="spec-value">Guided-Missile Destroyer</div></div>
+  <div class="spec"><div class="spec-label">Style</div><div class="spec-value">Realistic / HD</div></div>
+</div>
+<div class="content">
+  <div class="section-label">Showcase Video</div>
+  <div class="video-wrap" id="videoWrap">
+    <video id="shipVideo" poster="Type 23-poster.jpg" preload="none">
+      <source src="Arleigh%20Burke.mp4" type="video/mp4">
     </video>
-    <button id="fullscreen-btn" aria-label="Toggle fullscreen video" style="margin-top: 10px; padding: 8px 14px; border-radius: 6px; border: none; background: #64b4ff; color: #0a1a2f; font-weight: bold; cursor: pointer;">
-      Fullscreen
-    </button>
-  </section>
-
-  <div class="posters-menu" role="tablist" aria-label="Project selection">
-    <div class="poster-thumb" role="tab" tabindex="-1" aria-selected="false" data-index="0">
-      <img src="Type%2023-poster.jpg" alt="Type 23 Poster" />
-    </div>
-    <div class="poster-thumb selected" role="tab" tabindex="0" aria-selected="true" data-index="1">
-      <img src="Type%2023-poster.jpg" alt="Arleigh Burke Poster" />
-    </div>
-    <div class="poster-thumb" role="tab" tabindex="-1" aria-selected="false" data-index="2">
-      <img src="Type%2023-poster.jpg" alt="Type 26 Poster" />
+    <div class="video-poster" id="videoPoster" onclick="playVideo()">
+      <div class="play-btn">▶</div>
+      <div class="play-label">Play Showcase</div>
     </div>
   </div>
-
+  <div class="section-label">Screenshots</div>
+  <div class="gallery">
+    <img src="Type 23-poster.jpg" alt="Arleigh Burke view 1">
+    <img src="Type 23-poster.jpg" alt="Arleigh Burke view 2">
+    <img src="Type 23-poster.jpg" alt="Arleigh Burke view 3">
+  </div>
+  <div class="other-ships">
+    <div class="section-label">Other Projects</div>
+    <div class="ships-grid">
+      <a href="Type23.html" class="ship-card">
+        <img src="Type 23-poster.jpg" alt="Type 23">
+        <div class="ship-card-body">
+          <div class="ship-card-tag">Royal Navy · Frigate</div>
+          <div class="ship-card-title">Type 23</div>
+        </div>
+      </a>
+      <a href="Type26.html" class="ship-card">
+        <img src="Type 23-poster.jpg" alt="Type 26">
+        <div class="ship-card-body">
+          <div class="ship-card-tag">Royal Navy · Frigate</div>
+          <div class="ship-card-title">Type 26</div>
+        </div>
+      </a>
+    </div>
+  </div>
 </div>
-
+<footer>
+  <div class="footer-logo">SHARKTOP5 PORTFOLIO</div>
+  <div class="footer-copy">© 2025 · Roblox Texture Artist</div>
+</footer>
 <script>
-  const projects = [
-    {
-      title: "Type 23 – Realistic Naval Asset",
-      description: "This high-fidelity Type 23 Frigate was created with a focus on realistic naval texturing, replicating wear, weathering, and material variation.",
-      videoSrc: "Type 23.mp4",
-      posterAlt: "Type 23 Poster",
-      posterSrc: "Type 23-poster.jpg"
-    },
-    {
-      title: "Arleigh Burke – Advanced Destroyer Textures",
-      description: "Detailed texturing work showcasing complex metal surfaces and realistic weathering effects on the Arleigh Burke-class destroyer.",
-      videoSrc: "Arleigh Burke.mp4",
-      posterAlt: "Arleigh Burke Poster",
-      posterSrc: "Type 23-poster.jpg"
-    },
-    {
-      title: "Type 26 – Next-Gen Naval Frigate",
-      description: "An advanced texturing project featuring the Type 26 Frigate with emphasis on futuristic materials and lighting effects.",
-      videoSrc: "Type 26.mp4",
-      posterAlt: "Type 26 Poster",
-      posterSrc: "Type 23-poster.jpg"
-    }
-  ];
-
-  const projectTitle = document.getElementById('project-title');
-  const projectDescription = document.getElementById('project-description');
-  const projectVideo = document.getElementById('project-video');
-  const posters = document.querySelectorAll('.poster-thumb');
-
-  function updateProject(index) {
-    const project = projects[index];
-    projectTitle.textContent = project.title;
-    projectDescription.textContent = project.description;
-
-    // Update video source
-    projectVideo.pause();
-    projectVideo.setAttribute('src', project.videoSrc);
-    projectVideo.load();
-    projectVideo.play();
-
-    // Update selected poster styling and accessibility attributes
-    posters.forEach((poster, i) => {
-      if (i === index) {
-        poster.classList.add('selected');
-        poster.setAttribute('aria-selected', 'true');
-        poster.setAttribute('tabindex', '0');
-      } else {
-        poster.classList.remove('selected');
-        poster.setAttribute('aria-selected', 'false');
-        poster.setAttribute('tabindex', '-1');
-      }
-    });
+  function playVideo() {
+    document.getElementById('videoPoster').style.display = 'none';
+    document.getElementById('shipVideo').play();
   }
-
-  posters.forEach((poster) => {
-    poster.addEventListener('click', () => {
-      const index = parseInt(poster.getAttribute('data-index'), 10);
-      updateProject(index);
-      poster.focus();
-    });
-
-    poster.addEventListener('keydown', (e) => {
-      const currentIndex = parseInt(e.target.getAttribute('data-index'), 10);
-      let newIndex;
-      if (e.key === 'ArrowRight') {
-        newIndex = (currentIndex + 1) % projects.length;
-        updateProject(newIndex);
-        posters[newIndex].focus();
-        e.preventDefault();
-      } else if (e.key === 'ArrowLeft') {
-        newIndex = (currentIndex - 1 + projects.length) % projects.length;
-        updateProject(newIndex);
-        posters[newIndex].focus();
-        e.preventDefault();
-      }
-    });
-  });
-
-  // Fullscreen button logic
-  const fullscreenBtn = document.getElementById('fullscreen-btn');
-  fullscreenBtn.addEventListener('click', () => {
-    if (!document.fullscreenElement) {
-      projectVideo.requestFullscreen().catch(err => {
-        alert(`Error attempting to enable full-screen mode: ${err.message}`);
-      });
-    } else {
-      document.exitFullscreen();
-    }
-  });
-
-  // Initialize with Arleigh Burke (index 1)
-  updateProject(1);
 </script>
-
 </body>
 </html>
