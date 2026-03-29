@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Type 23 – Sharktop5</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:  #0a0f1a;
+      --deep:  #060b12;
+      --steel: #1c2a3a;
+      --cyan:  #00c8ff;
+      --text:  #d4dde8;
+      --muted: #5a7a99;
+      --white: #ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--deep);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.4;
+    }
+    .scanline {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+      opacity: 0.15;
+      animation: scan 4s linear infinite;
+      pointer-events: none;
+      z-index: 998;
+    }
+    @keyframes scan { 0% { top: 0; } 100% { top: 100vh; } }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(6,11,18,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,200,255,0.08);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem; letter-spacing: 0.15em; color: var(--cyan);
+      text-decoration: none;
+    }
+    .nav-back {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--cyan); }
+
+    /* HERO */
+    .hero {
+      min-height: 60vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 9rem 3rem 4rem;
+      position: relative; overflow: hidden;
+      border-bottom: 1px solid rgba(0,200,255,0.08);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(0,200,255,0.04) 0%, transparent 60%),
+                  linear-gradient(to bottom, transparent 40%, var(--deep) 100%);
+    }
+    .hero-tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 0.3em; color: var(--cyan);
+      text-transform: uppercase; margin-bottom: 1rem;
+      opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      line-height: 0.95; color: var(--white);
+      opacity: 0; animation: fadeUp 0.6s 0.35s forwards;
+    }
+    .hero h1 span { color: var(--cyan); }
+    .hero-desc {
+      max-width: 60ch; font-size: 0.95rem; color: var(--muted);
+      line-height: 1.7; margin-top: 1.2rem;
+      opacity: 0; animation: fadeUp 0.6s 0.5s forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* SPECS BAR */
+    .specs-bar {
+      display: flex; border-bottom: 1px solid rgba(0,200,255,0.08);
+      opacity: 0; animation: fadeUp 0.6s 0.65s forwards;
+    }
+    .spec {
+      flex: 1; padding: 1.5rem 3rem;
+      border-right: 1px solid rgba(0,200,255,0.08);
+    }
+    .spec:last-child { border-right: none; }
+    .spec-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem;
+    }
+    .spec-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem; letter-spacing: 0.05em; color: var(--white);
+    }
+
+    /* CONTENT */
+    .content { padding: 5rem 3rem; max-width: 1200px; margin: 0 auto; }
+
+    .section-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--cyan);
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;
+    }
+    .section-label::after {
+      content: ''; display: block; height: 1px; width: 60px;
+      background: var(--cyan); opacity: 0.4;
+    }
+
+    /* VIDEO */
+    .video-wrap {
+      position: relative; width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--steel);
+      border: 1px solid rgba(0,200,255,0.12);
+      clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+      overflow: hidden; margin-bottom: 5rem;
+    }
+    .video-wrap video {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .video-poster {
+      position: absolute; inset: 0;
+      background: var(--steel);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 1rem; cursor: pointer;
+    }
+    .play-btn {
+      width: 72px; height: 72px; border-radius: 50%;
+      border: 2px solid var(--cyan);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cyan); font-size: 1.5rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .video-poster:hover .play-btn {
+      background: rgba(0,200,255,0.1); transform: scale(1.08);
+    }
+    .play-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--muted);
+    }
+
+    /* GALLERY */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem; margin-bottom: 5rem;
+    }
+    .gallery img {
+      width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block;
+      filter: saturate(0.7) brightness(0.85);
+      border: 1px solid rgba(0,200,255,0.08);
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+      transition: filter 0.3s;
+    }
+    .gallery img:hover { filter: saturate(1) brightness(1); }
+
+    /* OTHER SHIPS */
+    .other-ships h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem; color: var(--white); margin-bottom: 2rem;
+    }
+    .ships-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem;
+    }
+    .ship-card {
+      display: block; text-decoration: none;
+      position: relative; overflow: hidden;
+      background: var(--steel);
+      border: 1px solid rgba(0,200,255,0.08);
+      clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .ship-card:hover { transform: translateY(-4px); border-color: rgba(0,200,255,0.35); }
+    .ship-card img {
+      width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block;
+      filter: saturate(0.5) brightness(0.7);
+      transition: filter 0.3s;
+    }
+    .ship-card:hover img { filter: saturate(0.9) brightness(0.9); }
+    .ship-card-body { padding: 1.2rem; }
+    .ship-card-tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--cyan); opacity: 0.7; margin-bottom: 0.3rem;
+    }
+    .ship-card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem; color: var(--white);
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 5rem;
+      padding: 2rem 3rem;
+      border-top: 1px solid rgba(0,200,255,0.07);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem; color: var(--muted); letter-spacing: 0.1em;
+    }
+    .footer-copy {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.15em;
+      color: rgba(90,122,153,0.5);
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .hero, .content { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .specs-bar { flex-wrap: wrap; }
+      .spec { min-width: 50%; padding: 1.2rem 1.5rem; }
+      .ships-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 0.5rem; padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="scanline"></div>
+
+<nav>
+  <a href="Homepage.html" class="nav-logo">SHARKTOP5</a>
+  <a href="Homepage.html" class="nav-back">← Back to Portfolio</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-tag">// Royal Navy · Duke Class · Frigate</div>
+  <h1>Type <span>23</span></h1>
+  <p class="hero-desc">
+    High-fidelity frigate textures replicating the Duke-class hull tones, weathered steel plating,
+    deck markings, and material variation found on real Royal Navy vessels.
+  </p>
+</section>
+
+<div class="specs-bar">
+  <div class="spec"><div class="spec-label">Class</div><div class="spec-value">Duke-Class Frigate</div></div>
+  <div class="spec"><div class="spec-label">Navy</div><div class="spec-value">Royal Navy</div></div>
+  <div class="spec"><div class="spec-label">Type</div><div class="spec-value">Naval Texture Pack</div></div>
+  <div class="spec"><div class="spec-label">Style</div><div class="spec-value">Realistic / HD</div></div>
+</div>
+
+<div class="content">
+
+  <!-- VIDEO -->
+  <div class="section-label">Showcase Video</div>
+  <div class="video-wrap" id="videoWrap">
+    <video id="shipVideo" poster="Type 23-poster.jpg" preload="none">
+      <source src="Type%2023.mp4" type="video/mp4">
+    </video>
+    <div class="video-poster" id="videoPoster" onclick="playVideo()">
+      <div class="play-btn">▶</div>
+      <div class="play-label">Play Showcase</div>
+    </div>
+  </div>
+
+  <!-- GALLERY -->
+  <div class="section-label">Screenshots</div>
+  <div class="gallery">
+    <img src="Type 23-poster.jpg" alt="Type 23 view 1">
+    <img src="Type 23-poster.jpg" alt="Type 23 view 2">
+    <img src="Type 23-poster.jpg" alt="Type 23 view 3">
+  </div>
+
+  <!-- OTHER SHIPS -->
+  <div class="other-ships">
+    <div class="section-label">Other Projects</div>
+    <div class="ships-grid">
+      <a href="ArleighBurke.html" class="ship-card">
+        <img src="Type 23-poster.jpg" alt="Arleigh Burke">
+        <div class="ship-card-body">
+          <div class="ship-card-tag">US Navy · Destroyer</div>
+          <div class="ship-card-title">Arleigh Burke</div>
+        </div>
+      </a>
+      <a href="Type26.html" class="ship-card">
+        <img src="Type 23-poster.jpg" alt="Type 26">
+        <div class="ship-card-body">
+          <div class="ship-card-tag">Royal Navy · Frigate</div>
+          <div class="ship-card-title">Type 26</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">SHARKTOP5 PORTFOLIO</div>
+  <div class="footer-copy">© 2025 · Roblox Texture Artist</div>
+</footer>
+
+<script>
+  function playVideo() {
+    const video = document.getElementById('shipVideo');
+    const poster = document.getElementById('videoPoster');
+    poster.style.display = 'none';
+    video.play();
+  }
+</script>
+</body>
+</html>
